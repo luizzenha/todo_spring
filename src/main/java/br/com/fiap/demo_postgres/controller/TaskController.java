@@ -11,9 +11,12 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskRepository taskRepository;
 
+    private TaskRepository taskRepository;
+    @Autowired
+    public TaskController(TaskRepository taskRepository){
+        this.taskRepository = taskRepository;
+    }
     @GetMapping
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
